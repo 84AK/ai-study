@@ -18,16 +18,19 @@ export const metadata: Metadata = {
   keywords: ["AI Study", "AK Labs", "Activity Log", "Sellstagram", "AI Playgrounds"],
 };
 
+import ThemeToggle from "@/components/ThemeToggle";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
+    <html lang="ko" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <ThemeToggle />
         {children}
       </body>
     </html>

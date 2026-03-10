@@ -1,6 +1,8 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { ClipboardList, Instagram, Sparkles, PlusCircle } from 'lucide-react';
+import Background from '@/components/Background';
 import ProjectCard from '@/components/ProjectCard';
 
 const projects = [
@@ -30,78 +32,135 @@ const projects = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1.2,
+      ease: [0.16, 1, 0.3, 1] as any,
+    },
+  },
+};
+
 export default function Home() {
   return (
     <main className="premium-container">
+      <Background />
+      <div className="mesh-gradient" />
+
       {/* Header Section */}
-      <header style={{ marginBottom: '12rem', textAlign: 'center' }}>
-        <h1 style={{
-          fontSize: 'clamp(2.5rem, 8vw, 5.5rem)',
-          fontWeight: '900',
-          lineHeight: 1.2,
-          marginBottom: '2.5rem',
-          letterSpacing: '-0.04em'
-        }} className="gradient-text">
+      <motion.header
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        style={{ marginBottom: '14rem', textAlign: 'center' }}
+      >
+        <motion.h1
+          variants={itemVariants}
+          style={{
+            fontSize: 'clamp(3rem, 10vw, 6.5rem)',
+            fontWeight: '950',
+            lineHeight: 1.1,
+            marginBottom: '3rem',
+            letterSpacing: '-0.05em',
+            filter: 'drop-shadow(0 0 20px rgba(79, 70, 229, 0.15))'
+          }}
+          className="gradient-text"
+        >
           AI Study <br /> Universe
-        </h1>
-        <p style={{
-          fontSize: 'clamp(1rem, 2.5vw, 1.35rem)',
-          color: '#64748b',
-          maxWidth: '750px',
-          margin: '0 auto 4.5rem auto',
-          fontWeight: '500',
-          lineHeight: '1.8'
-        }}>
+        </motion.h1>
+
+        <motion.p
+          variants={itemVariants}
+          style={{
+            fontSize: 'clamp(1.1rem, 2.5vw, 1.4rem)',
+            color: 'var(--text-secondary)',
+            maxWidth: '800px',
+            margin: '0 auto 5rem auto',
+            fontWeight: '500',
+            lineHeight: '2',
+            letterSpacing: '-0.01em'
+          }}
+        >
           우리가 함께 만든 인공지능 결과물들을 한곳에 모았습니다. ✨ <br />
           더 따뜻하고 친근한 AI 세상을 꿈꾸는 우리의 여정에 함께해 주세요.
-        </p>
+        </motion.p>
 
-        <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
+        <motion.div variants={itemVariants} style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
           <a href="https://litt.ly/aklabs" target="_blank" className="glow-button">
             AKLABS 공식 홈페이지
           </a>
-        </div>
-      </header>
+        </motion.div>
+      </motion.header>
 
       {/* Bento Grid */}
-      <section className="bento-shell">
+      <motion.section
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        className="bento-shell"
+      >
         {projects.map((project, index) => (
           <ProjectCard key={index} {...project} />
         ))}
 
         {/* Playful Placeholder */}
-        <div className="premium-card" style={{
-          justifyContent: 'center',
-          alignItems: 'center',
-          border: '3px dashed #e2e8f0',
-          background: 'rgba(255, 255, 255, 0.3)',
-          boxShadow: 'none',
-          minHeight: '320px'
-        }}>
-          <PlusCircle size={48} color="#cbd5e1" />
+        <motion.div
+          variants={itemVariants}
+          className="premium-card"
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            border: '3px dashed var(--card-border)',
+            background: 'var(--card-bg)',
+            boxShadow: 'none',
+            minHeight: '320px'
+          }}
+        >
+          <PlusCircle size={48} color="#94a3b8" />
           <p style={{
             marginTop: '1.5rem',
             fontSize: '1.1rem',
-            color: '#94a3b8',
+            color: 'var(--text-secondary)',
             fontWeight: '600',
           }}>
             더 멋진 발자취가 곧 추가될 예정이에요
           </p>
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
       {/* Footer */}
-      <footer style={{
-        marginTop: '18rem',
-        paddingTop: '5rem',
-        borderTop: '1px solid #e2e8f0',
-        textAlign: 'center',
-        color: '#94a3b8',
-        fontSize: '1rem'
-      }}>
+      <motion.footer
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.5, delay: 0.5 }}
+        style={{
+          marginTop: '18rem',
+          paddingTop: '5rem',
+          borderTop: '1px solid var(--card-border)',
+          textAlign: 'center',
+          color: 'var(--text-secondary)',
+          fontSize: '1rem'
+        }}
+      >
         <p>© 2026 AI Study Class. Crafting Future Intelligence with Love.</p>
         <p style={{ marginTop: '0.5rem', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1' }}>Designed by AK Labs Universe</p>
-      </footer>
+      </motion.footer>
     </main>
   );
 }

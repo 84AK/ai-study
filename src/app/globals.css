@@ -7,88 +7,118 @@
 }
 
 :root {
-  --background: #fdfdff;
-  --foreground: #1e293b;
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card-bg: rgba(255, 255, 255, 0.45);
+  --card-border: rgba(255, 255, 255, 0.5);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --accent-glow: rgba(79, 70, 229, 0.1);
+  --mesh-opacity: 1;
   --card-padding: 2.5rem;
-  --soft-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.04);
 }
 
-/* Reset & Base */
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+.dark {
+  --background: #020617;
+  --foreground: #f8fafc;
+  --card-bg: rgba(15, 23, 42, 0.6);
+  --card-border: rgba(255, 255, 255, 0.05);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --accent-glow: rgba(99, 102, 241, 0.15);
+  --mesh-opacity: 0.6;
 }
 
 html,
 body {
-  background-color: #fdfdff !important;
-  color: var(--foreground) !important;
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: background-color 0.5s ease, color 0.5s ease;
   min-height: 100vh;
+  margin: 0;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Mesh Gradient Background (Natural and soft) */
-body::before {
-  content: "";
+/* Enhanced Mesh Gradient Overlay */
+.mesh-gradient {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background:
-    radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 100% 0%, rgba(244, 63, 94, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 100% 100%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 0% 100%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.5) 0%, transparent 70%);
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.18) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(244, 63, 94, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.15) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(14, 165, 233, 0.15) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(168, 85, 247, 0.1) 0px, transparent 50%);
   z-index: -1;
-  filter: blur(60px);
+  pointer-events: none;
+  opacity: var(--mesh-opacity);
+  transition: opacity 0.5s ease;
 }
 
 /* Typography Perfection */
 .gradient-text {
-  background: linear-gradient(135deg, #4f46e5 0%, #10b981 100%);
+  background: linear-gradient(135deg, #4f46e5 10%, #0ea5e9 50%, #10b981 90%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent !important;
+  display: inline-block;
 }
 
 .premium-container {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 8rem 2rem;
+  padding: 10rem 2rem;
 }
 
 /* Premium Card (Clean and elevated) */
 .premium-card {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 3rem;
+  background: var(--card-bg);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  border: 1px solid var(--card-border);
+  border-radius: 4rem;
   padding: var(--card-padding);
-  box-shadow: var(--soft-shadow);
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow:
+    0 10px 40px -10px rgba(0, 0, 0, 0.05),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
 }
 
 .premium-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  background: #ffffff;
-  border-color: var(--accent-color, rgba(79, 70, 229, 0.2));
-  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-16px) scale(1.01);
+  background: var(--card-bg);
+  border-color: var(--accent-color, rgba(79, 70, 229, 0.3));
+  box-shadow:
+    0 40px 80px -20px rgba(0, 0, 0, 0.2),
+    inset 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+.premium-card h3 {
+  color: var(--text-primary);
+  transition: color 0.5s ease;
+  z-index: 1;
+}
+
+.premium-card p {
+  color: var(--text-secondary);
+  transition: color 0.5s ease;
+  z-index: 1;
 }
 
 /* Bento Layout */
 .bento-shell {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 2.5rem;
-  margin-top: 6rem;
+  gap: 3.5rem;
+  margin-top: 8rem;
 }
 
 @media (min-width: 1024px) {
@@ -99,21 +129,35 @@ body::before {
 
 /* Button UI */
 .glow-button {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 1.25rem 2.75rem;
-  background: #1e293b;
+  padding: 1.4rem 3.2rem;
+  background: var(--foreground);
   border-radius: 9999px;
-  font-weight: 700;
-  color: #fff;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-weight: 800;
+  color: var(--background);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
-  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.glow-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transform: translateX(-100%);
+  transition: 0.6s;
 }
 
 .glow-button:hover {
-  transform: scale(1.05);
-  background: #0f172a;
-  box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px) scale(1.03);
+  opacity: 0.9;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+}
+
+.glow-button:hover::after {
+  transform: translateX(100%);
 }
