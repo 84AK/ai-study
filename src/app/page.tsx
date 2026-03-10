@@ -1,65 +1,107 @@
-import Image from "next/image";
+'use client';
+
+import { ClipboardList, Instagram, Sparkles, PlusCircle } from 'lucide-react';
+import ProjectCard from '@/components/ProjectCard';
+
+const projects = [
+  {
+    title: 'Activity Log',
+    description: 'AI와 함께 걸어온 발자취를 소중히 담았습니다. 우리의 성장 과정과 학습 기록들을 차곡차곡 모아놓은 대시보드예요.',
+    url: 'https://84ak.github.io/activity_log/',
+    icon: ClipboardList,
+    accentColor: '#6366f1', // Indigo
+    category: '성장 대시보드',
+  },
+  {
+    title: 'Sellstagram',
+    description: '마케팅의 새로운 물결을 경험해 보세요! AI로 인스타그램 마이 채널을 똑똑하게 키워가는 자동화 비법을 나눕니다.',
+    url: 'https://sellstagram.vercel.app/',
+    icon: Instagram,
+    accentColor: '#f43f5e', // Rose
+    category: '마케팅 자동화',
+  },
+  {
+    title: 'Playgrounds',
+    description: '호기심 가득한 눈으로 세상을 바라보는 시간! 다양한 AI 모델들과 신나게 장난치며 지능의 매력을 발견해 봐요.',
+    url: 'https://ai-playgrounds.vercel.app/',
+    icon: Sparkles,
+    accentColor: '#10b981', // Emerald
+    category: 'AI 체험실',
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="premium-container">
+      {/* Header Section */}
+      <header style={{ marginBottom: '12rem', textAlign: 'center' }}>
+        <h1 style={{
+          fontSize: 'clamp(2.5rem, 8vw, 5.5rem)',
+          fontWeight: '900',
+          lineHeight: 1.2,
+          marginBottom: '2.5rem',
+          letterSpacing: '-0.04em'
+        }} className="gradient-text">
+          AI Study <br /> Universe
+        </h1>
+        <p style={{
+          fontSize: 'clamp(1rem, 2.5vw, 1.35rem)',
+          color: '#64748b',
+          maxWidth: '750px',
+          margin: '0 auto 4.5rem auto',
+          fontWeight: '500',
+          lineHeight: '1.8'
+        }}>
+          우리가 함께 만든 인공지능 결과물들을 한곳에 모았습니다. ✨ <br />
+          더 따뜻하고 친근한 AI 세상을 꿈꾸는 우리의 여정에 함께해 주세요.
+        </p>
+
+        <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
+          <a href="https://litt.ly/aklabs" target="_blank" className="glow-button">
+            AKLABS 공식 홈페이지
+          </a>
+        </div>
+      </header>
+
+      {/* Bento Grid */}
+      <section className="bento-shell">
+        {projects.map((project, index) => (
+          <ProjectCard key={index} {...project} />
+        ))}
+
+        {/* Playful Placeholder */}
+        <div className="premium-card" style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          border: '3px dashed #e2e8f0',
+          background: 'rgba(255, 255, 255, 0.3)',
+          boxShadow: 'none',
+          minHeight: '320px'
+        }}>
+          <PlusCircle size={48} color="#cbd5e1" />
+          <p style={{
+            marginTop: '1.5rem',
+            fontSize: '1.1rem',
+            color: '#94a3b8',
+            fontWeight: '600',
+          }}>
+            더 멋진 발자취가 곧 추가될 예정이에요
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Footer */}
+      <footer style={{
+        marginTop: '18rem',
+        paddingTop: '5rem',
+        borderTop: '1px solid #e2e8f0',
+        textAlign: 'center',
+        color: '#94a3b8',
+        fontSize: '1rem'
+      }}>
+        <p>© 2026 AI Study Class. Crafting Future Intelligence with Love.</p>
+        <p style={{ marginTop: '0.5rem', fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1' }}>Designed by AK Labs Universe</p>
+      </footer>
+    </main>
   );
 }
