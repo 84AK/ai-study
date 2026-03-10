@@ -9,7 +9,7 @@ AI Study Class 수업에서 활용하는 웹앱들을 모아놓은 프리미엄 
 - **Layout:** Bento Grid
 
 ## 🌐 배포 사이트
-- **배포 URL:** [https://84ak.github.io/ai-study-hub/](https://84ak.github.io/ai-study-hub/)
+- **배포 URL:** [https://84ak.github.io/ai-study/](https://84ak.github.io/ai-study/)
 
 ## 🛠️ 시작하기
 
