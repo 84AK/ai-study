@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ClipboardList, Instagram, Sparkles, PlusCircle } from 'lucide-react';
+import { ClipboardList, Instagram, Sparkles, PlusCircle, GraduationCap } from 'lucide-react';
 import Background from '@/components/Background';
 import ProjectCard from '@/components/ProjectCard';
 
@@ -9,7 +9,7 @@ const projects = [
   {
     title: 'Activity Log',
     description: 'AI와 함께 걸어온 발자취를 소중히 담았습니다. 우리의 성장 과정과 학습 기록들을 차곡차곡 모아놓은 대시보드예요.',
-    url: 'https://84ak.github.io/activity_log/',
+    url: 'https://activity-log-six.vercel.app/',
     icon: ClipboardList,
     accentColor: '#6366f1', // Indigo
     category: '성장 대시보드',
@@ -105,6 +105,76 @@ export default function Home() {
           </a>
         </motion.div>
       </motion.header>
+
+      {/* 수업 준비 섹션 (Class Prep Section) */}
+      <motion.section
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        style={{ marginBottom: '8rem', display: 'flex', justifyContent: 'center' }}
+      >
+        <motion.div
+          variants={itemVariants}
+          className="premium-card"
+          style={{
+            maxWidth: '800px',
+            width: '100%',
+            textAlign: 'center',
+            padding: '3.5rem 2rem',
+            background: 'linear-gradient(135deg, rgba(79, 70, 229, 0.08) 0%, rgba(14, 165, 233, 0.08) 100%)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.15)',
+            position: 'relative',
+          }}
+        >
+          <div style={{
+            display: 'inline-flex',
+            padding: '1.2rem',
+            background: 'var(--accent-glow, rgba(79, 70, 229, 0.1))',
+            borderRadius: '1.5rem',
+            marginBottom: '1.5rem',
+            border: '1px solid rgba(79, 70, 229, 0.15)'
+          }}>
+            <GraduationCap size={40} color="#4f46e5" />
+          </div>
+          <h2 style={{
+            fontSize: '2rem',
+            fontWeight: '900',
+            marginBottom: '1rem',
+            color: 'var(--text-primary)',
+            letterSpacing: '-0.02em'
+          }}>
+            🎓 수업 준비 안내
+          </h2>
+          <p style={{
+            fontSize: '1.1rem',
+            color: 'var(--text-secondary)',
+            marginBottom: '2.5rem',
+            fontWeight: '500',
+            maxWidth: '500px',
+            margin: '0 auto 2.5rem auto',
+            lineHeight: '1.6'
+          }}>
+            원활한 수업 진행을 위해 필요한 계정 생성 및 <br /> 사전 준비 사항을 확인해 보세요.
+          </p>
+          <div>
+            <a
+              href="https://ai-student-id.vercel.app/"
+              target="_blank"
+              className="glow-button"
+              style={{
+                background: 'linear-gradient(135deg, #4f46e5 0%, #0ea5e9 100%)',
+                color: '#ffffff',
+                border: 'none',
+                padding: '1.2rem 3rem'
+              }}
+            >
+              계정 준비하기
+            </a>
+          </div>
+        </motion.div>
+      </motion.section>
 
       {/* Bento Grid */}
       <motion.section
