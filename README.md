@@ -25,7 +25,7 @@ npm run dev
 
 ## 🔗 관련 링크
 - **AK Labs 공식 홈페이지:** [https://litt.ly/aklabs](https://litt.ly/aklabs)
-- **Activity Log:** [https://84ak.github.io/activity_log/](https://84ak.github.io/activity_log/)
+- **Activity Log:** [https://activity-log-six.vercel.app/](https://activity-log-six.vercel.app/)
 - **Sellstagram:** [https://sellstagram.vercel.app/](https://sellstagram.vercel.app/)
 - **AI Playgrounds:** [https://ai-playgrounds.vercel.app/](https://ai-playgrounds.vercel.app/)
 

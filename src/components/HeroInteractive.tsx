@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Brain, Rocket, Sparkles, Cpu, Bot } from 'lucide-react';
+import { Brain, Rocket, Sparkles, Cpu, Bot, ChevronDown } from 'lucide-react';
 import { useRef } from 'react';
 
 const containerVariants = {
@@ -149,10 +149,46 @@ export default function HeroInteractive() {
           더 따뜻하고 친근한 AI 세상을 꿈꾸는 우리의 여정에 함께해 주세요.
         </motion.p>
 
-        <motion.div variants={itemVariants} style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', pointerEvents: 'auto' }}>
-          <a href="https://litt.ly/aklabs" target="_blank" rel="noopener noreferrer" className="glow-button">
-            AKLABS 공식 홈페이지
-          </a>
+        <motion.div 
+          variants={itemVariants} 
+          style={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            pointerEvents: 'auto',
+            marginTop: '2rem' 
+          }}
+        >
+          <motion.button
+            onClick={() => {
+              const element = document.getElementById('projects');
+              element?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            style={{
+              background: 'transparent',
+              border: '1px solid var(--card-border)',
+              borderRadius: '50%',
+              width: '64px',
+              height: '64px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              color: 'var(--text-secondary)',
+              boxShadow: '0 10px 20px rgba(0,0,0,0.05)',
+              backdropFilter: 'blur(10px)',
+              transition: 'all 0.3s ease'
+            }}
+            whileHover={{ 
+              scale: 1.1, 
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              borderColor: 'var(--color-primary)',
+              color: 'var(--color-primary)'
+            }}
+          >
+            <ChevronDown size={32} />
+          </motion.button>
         </motion.div>
       </div>
     </motion.header>

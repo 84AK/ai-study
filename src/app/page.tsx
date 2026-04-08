@@ -71,6 +71,7 @@ export default function Home() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
+        id="projects"
         className="bento-shell"
       >
         {/* 그리드 첫 번째에 '수업 준비 안내' 통합 배치 (대형 배너 디자인) */}
@@ -188,9 +189,18 @@ export default function Home() {
           alignItems: 'center'
         }}
       >
+        <a 
+          href="https://litt.ly/aklabs" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="glow-button"
+          style={{ marginBottom: '2rem' }}
+        >
+          AKLABS 공식 홈페이지
+        </a>
         <p>© 2026 AI Study Class. Crafting Future Intelligence.</p>
         <p style={{ fontSize: '0.85rem', fontWeight: '600', color: '#cbd5e1' }}>
-          Designed by <a href="https://litt.ly/aklabs" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>AK Labs Universe</a>
+          Designed by <span style={{ color: 'var(--color-primary)' }}>AK Labs Universe</span>
         </p>
       </motion.footer>
     </main>
