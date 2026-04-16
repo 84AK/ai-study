@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ClipboardList, Instagram, Sparkles, PlusCircle, GraduationCap } from 'lucide-react';
+import { ClipboardList, Instagram, Sparkles, PlusCircle, GraduationCap, BookOpen } from 'lucide-react';
 import Background from '@/components/Background';
 import ProjectCard from '@/components/ProjectCard';
 import HeroInteractive from '@/components/HeroInteractive';
@@ -30,6 +30,14 @@ const projects = [
     icon: Sparkles,
     accentColor: '#10b981', // Emerald
     category: 'AI 체험실',
+  },
+  {
+    title: 'Learn Hub',
+    description: 'AI 학습의 지평을 넓혀가는 지식의 창고! 체계적인 커리큘럼과 풍성한 학습 자료로 탄탄한 AI 기초를 다져보세요.',
+    url: 'https://aklabs-84.github.io/AI-Learn-Hub/',
+    icon: BookOpen,
+    accentColor: '#f59e0b', // Amber
+    category: 'AI 학습 센터',
   },
 ];
 
