@@ -8,6 +8,10 @@ AI Study Class 수업에서 활용하는 웹앱들을 모아놓은 프리미엄 
 - **Animation:** Framer Motion
 - **Layout:** Bento Grid
 
+## 🚀 최신 업데이트 (2026-04-28)
+- **어드민 관리 시스템**: `/admin` 경로를 통해 수업 자료(노션 링크 등)를 직접 관리할 수 있는 기능이 추가되었습니다.
+- **실시간 수업 자료 섹션**: 메인 페이지 벤토 그리드에서 최신 수업 자료를 즉시 확인할 수 있습니다.
+
 ## 🌐 배포 사이트
 - **배포 URL:** [https://84ak.github.io/ai-study/](https://84ak.github.io/ai-study/)
 
@@ -28,6 +32,14 @@ npm run dev
 - **Activity Log:** [https://activity-log-six.vercel.app/](https://activity-log-six.vercel.app/)
 - **Sellstagram:** [https://sellstagram.vercel.app/](https://sellstagram.vercel.app/)
 - **AI Playgrounds:** [https://ai-playgrounds.vercel.app/](https://ai-playgrounds.vercel.app/)
+
+---
+
+## 🔗 Official Links
+- **AKLABS 공식 홈페이지**: [https://litt.ly/aklabs](https://litt.ly/aklabs)
+
+---
+© 2026 AI Study Class. Designed by AK Labs Universe.
 
 ---
 수업 및 개인 학습 목적으로 제작되었습니다.

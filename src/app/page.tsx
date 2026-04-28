@@ -1,10 +1,11 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { ClipboardList, Instagram, Sparkles, PlusCircle, GraduationCap, BookOpen } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ClipboardList, Instagram, Sparkles, PlusCircle, GraduationCap, BookOpen, ExternalLink, ChevronRight, FileText } from 'lucide-react';
 import Background from '@/components/Background';
 import ProjectCard from '@/components/ProjectCard';
 import HeroInteractive from '@/components/HeroInteractive';
+import { useState, useEffect } from 'react';
 
 const projects = [
   {
@@ -65,6 +66,21 @@ const itemVariants = {
 };
 
 export default function Home() {
+  const [materials, setMaterials] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchMaterials = async () => {
+      try {
+        const res = await fetch('/api/materials');
+        const data = await res.json();
+        setMaterials(data.materials || []);
+      } catch (error) {
+        console.error('Failed to fetch materials:', error);
+      }
+    };
+    fetchMaterials();
+  }, []);
+
   return (
     <main className="premium-container">
       <Background />
@@ -151,6 +167,62 @@ export default function Home() {
             className="" /* 이제 1칸씩 균등 배치 */
           />
         ))}
+
+        {/* 수업 자료 섹션 (Bento Dynamic Card) */}
+        <motion.div
+          variants={itemVariants}
+          className="premium-card bento-span-2"
+          style={{
+            padding: '2rem',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1.5rem',
+            background: 'rgba(255, 255, 255, 0.02)',
+            border: '1px solid rgba(255, 255, 255, 0.05)'
+          }}
+        >
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-amber-500/10 rounded-lg border border-amber-500/20">
+                <FileText size={20} className="text-amber-500" />
+              </div>
+              <h2 className="text-xl font-black text-slate-900 dark:text-white">수업 자료 보관함</h2>
+            </div>
+            <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 bg-slate-200/50 dark:bg-slate-800/30 px-3 py-1 rounded-full">
+              Real-time Updated
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {materials.length > 0 ? (
+              materials.map((mat: any) => (
+                <motion.a
+                  key={mat.id}
+                  href={mat.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ x: 5, backgroundColor: 'rgba(79, 70, 229, 0.05)' }}
+                  className="flex items-center justify-between p-4 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5 group transition-all shadow-sm dark:shadow-none"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:text-amber-500 group-hover:bg-amber-500/10 transition-all">
+                      <BookOpen size={18} />
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors line-clamp-1">{mat.title}</h3>
+                      <p className="text-[10px] text-slate-600 dark:text-slate-500 font-medium">{mat.category} • {mat.createdAt}</p>
+                    </div>
+                  </div>
+                  <ChevronRight size={16} className="text-slate-400 dark:text-slate-600 group-hover:text-amber-500 transition-all" />
+                </motion.a>
+              ))
+            ) : (
+              <div className="col-span-full py-8 text-center bg-white/5 rounded-2xl border border-dashed border-white/10">
+                <p className="text-slate-500 text-sm font-medium">수업 자료가 곧 업데이트될 예정입니다.</p>
+              </div>
+            )}
+          </div>
+        </motion.div>
 
         {/* Playful Placeholder */}
         <motion.div
