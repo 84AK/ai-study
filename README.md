@@ -32,6 +32,7 @@ npm run dev
 - **Activity Log:** [https://activity-log-six.vercel.app/](https://activity-log-six.vercel.app/)
 - **Sellstagram:** [https://sellstagram.vercel.app/](https://sellstagram.vercel.app/)
 - **AI Playgrounds:** [https://ai-playgrounds.vercel.app/](https://ai-playgrounds.vercel.app/)
+- **VCEP Hub (Vibe Coding):** [https://84ak.github.io/VCEP/](https://84ak.github.io/VCEP/)
 
 ---
 
